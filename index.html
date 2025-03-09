@@ -49,6 +49,7 @@
                 now = datetime.now()
                 _date = now.strftime("%m/%d/%Y")
                 _time = now.strftime("%H:%M")
+                _time = now.strftime("%I:%M %p")
                 
                 # Generate a random number between 1 and 100
                 lucky_number = random.randint(1, 100)
