@@ -1,27 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Simple Sum with PyScript</title>
-    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
-    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-</head>
-<body>
-    <h2>Simple Number Sum</h2>
-    <input type="number" id="num1" placeholder="Enter first number">
-    <input type="number" id="num2" placeholder="Enter second number">
-    <button py-click="calculate_sum">Calculate Sum</button>
+<!doctype html>
 
-    <div id="result"></div>
+<html>
+    <head>
+        <!-- Recommended meta tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <py-script>
-from js import document
+        <!-- PyScript CSS -->
+        <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+        <!-- CSS for examples -->
+        <link rel="stylesheet" href="./assets/css/examples.css" />
 
-def calculate_sum(event):
-    num1 = float(document.getElementById('num1').value)
-    num2 = float(document.getElementById('num2').value)
-    total = num1 + num2
-    document.getElementById('result').innerText = f'The sum is: {result}'
-    </py-script>
-</body>
+        <!-- This script tag bootstraps PyScript -->
+        <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+        <!-- for splashscreen -->
+        <style>
+            #loading { outline: none; border: none; background: transparent }
+        </style>
+        <script type="module">
+            const loading = document.getElementById('loading');
+            addEventListener('py:ready', () => loading.close());
+            loading.showModal();
+        </script>
+
+        <title>PyScript Hello World</title>
+        <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    </head>
+
+    <body>
+        <dialog id="loading">
+            <h1>Loading...</h1>
+        </dialog>
+
+        <nav class="navbar" style="background-color: #000000">
+            <div class="app-header">
+            
+                <a class="title" href="" style="color: #f0ab3c">Hello World</a>
+            </div>
+        </nav>
+
+        <section class="pyscript">
+            <script type="py">
+                from pyscript import display
+                from datetime import datetime
+                import random
+
+                now = datetime.now()
+                _date = now.strftime("%m/%d/%Y")
+                _time = now.strftime("%H:%M")
+                
+                # Generate a random number between 1 and 100
+                lucky_number = random.randint(1, 100)
+
+                display(f"Your luck number right now at {_time} is {lucky_number}")
+
+            </script>
+        </section>
+    </body>
 </html>
